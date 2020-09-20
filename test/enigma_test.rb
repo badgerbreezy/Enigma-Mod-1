@@ -20,10 +20,15 @@ class EnigmaTest < Minitest::Test
     assert_equal "02715", enigma.generate_key
   end
 
-  def test_it_can_shift
+  def test_it_can_shift_key
     enigma = Enigma.new
 
-    assert_equal [[0,2], [2,7], [7,1], [1,5]], enigma.shift
+    assert_equal ['02', '27', '71', '15'], enigma.key_shift("02715")
+  end
+
+  def test_it_can_shift_date
+    enigma = Enigma.new
+    assert_equal '0125', enigma.date.shift
   end
 
   def test_it_can_encrypt

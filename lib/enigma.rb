@@ -10,12 +10,20 @@ class Enigma
     rand(9 ** 5).to_s.rjust(5, '0')
   end
 
-  def encrypt(encryption, key, date)
-    key_array = []
-    key_array << key.split("")
-    key_array.each_cons(2) do |number|
-      number
+  def key_shift(key)
+    key_array = key.split("")
+    sum = key_array.map do |number|
+      number.to_i
     end
+    key_shift = sum.each_cons(2).map do |sub_array| #["0, 2"] ["2"]
+      sub_array.join
+    end
+  end
+
+  # def date_shift(date)
+  #   date.to_i ** 2
+
+  def encrypt(encryption, key, date)
 
     # encryption_letters = encryption.map do |letter|
     #   p letter
@@ -26,7 +34,5 @@ class Enigma
   def encrypt1(encryption, key, date)
     encryption_hash = Hash.new
 
-    shift1 = rand(9 ** 5).to_s.rjust(5, '0')
-    shift2 = date.to_i ** 2
   end
 end
