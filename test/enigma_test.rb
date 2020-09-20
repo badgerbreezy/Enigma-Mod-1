@@ -28,7 +28,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_shift_date
     enigma = Enigma.new
-    assert_equal '0125', enigma.date.shift
+    assert_equal '1025', enigma.date_shift("040895")
   end
 
   def test_it_can_encrypt

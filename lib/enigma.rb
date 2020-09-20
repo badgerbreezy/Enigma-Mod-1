@@ -20,14 +20,13 @@ class Enigma
     end
   end
 
-  # def date_shift(date)
-  #   date.to_i ** 2
+  def date_shift(date)
+    ((date.to_i ** 2) % 10000).to_s
+  end
 
   def encrypt(encryption, key, date)
 
-    # encryption_letters = encryption.map do |letter|
-    #   p letter
-    # end
+
     encryption_hash = {encryption: encryption, key: key, date: date}
   end
 
