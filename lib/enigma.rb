@@ -24,6 +24,10 @@ class Enigma
     ((date.to_i ** 2) % 10000).to_s
   end
 
+  def total_shift(key, date)
+
+  end
+
   def encrypt(encryption, key, date)
 
 
