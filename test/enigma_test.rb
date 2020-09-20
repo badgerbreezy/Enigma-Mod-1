@@ -15,9 +15,17 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_generate_key
     enigma = Enigma.new
+    enigma.stubs(:generate_key).returns('02715')
 
-    assert_equal "02715", generate_key
+    assert_equal "02715", enigma.generate_key
   end
+
+  def test_it_can_shift
+    enigma = Enigma.new
+
+    assert_equal [[0,2], [2,7], [7,1], [1,5]], enigma.shift
+  end
+
   def test_it_can_encrypt
     enigma = Enigma.new
     assert_equal ({
