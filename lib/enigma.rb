@@ -18,13 +18,26 @@ class Enigma
     key_shift = sum.each_cons(2).map do |sub_array| #["0, 2"] ["2"]
       sub_array.join
     end
+    key_shift.map do |number|
+      number.to_i
+    end
   end
 
   def date_shift(date)
-    ((date.to_i ** 2) % 10000).to_s
+    date_shifted = ((date.to_i ** 2) % 10000).to_s.split("")
+    date_shifted.map do |number|
+      number.to_i
+    end
   end
 
   def total_shift(key, date)
+    key_date = []
+    key_date << key_shift(key)
+    key_date << date_shift(date)
+    key_date.map
+    key_date.transpose.map do |sub_array|
+      sub_array.to_i
+    end
 
   end
 
