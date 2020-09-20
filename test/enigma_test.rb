@@ -34,7 +34,7 @@ class EnigmaTest < Minitest::Test
   def test_total_shift
 
     enigma = Enigma.new
-    assert_equal ['3', '27', '73', '20'], enigma.total_shift("02715", "040895")
+    assert_equal [3, 27, 73, 20], enigma.total_shift("02715", "040895")
   end
 
   def test_it_can_encrypt

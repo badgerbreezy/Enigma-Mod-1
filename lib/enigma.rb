@@ -34,17 +34,32 @@ class Enigma
     key_date = []
     key_date << key_shift(key)
     key_date << date_shift(date)
-    key_date.map
     key_date.transpose.map do |sub_array|
-      sub_array.to_i
+      sub_array.sum
     end
-
   end
 
   def encrypt(encryption, key, date)
+    encryption_array = encryption.split("")
+    encryption_letters = encryption_array.map do |letter|
+      letter.ord
+    end
 
+    encryption_fours = encryption_letters.each_slice(4).to_a
+    encryption_fours 
+    require 'Pry';binding.pry
+    #   sub_array.map do |letter|
+    #     letter.ord
+    #   end
+    # end
+    # encryption_fours
+# require 'Pry';binding.pry
 
-    encryption_hash = {encryption: encryption, key: key, date: date}
+    key_shift = sum.each_cons(2).map do |sub_array| #["0, 2"] ["2"]
+      sub_array.join
+    end
+
+    encryption_hash = {encryption: encrypted, key: key, date: date}
   end
 
   def encrypt1(encryption, key, date)
