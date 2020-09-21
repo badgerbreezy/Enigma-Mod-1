@@ -1,9 +1,10 @@
 class Enigma
-  # attr_reader :characters
-  # def initialize
-  #   @characters = characters
-  # end
+  attr_reader :date
+  def initialize
+    @date = Date.today
+  end
 
+  
   def characters
     characters = ("a".."z").to_a << " "
   end

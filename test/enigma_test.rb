@@ -6,11 +6,12 @@ require 'date'
 require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
-  def test_it_exists
+  def test_it_exists_and_has_attributes
+    Date.stubs(:today).returns(Date.new(210920))
     enigma = Enigma.new
 
     assert_instance_of Enigma, enigma
-
+    assert_equal "21/09/20", enigma.date
   end
 
   def test_it_can_generate_key
