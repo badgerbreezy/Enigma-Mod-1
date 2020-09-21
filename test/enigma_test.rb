@@ -57,10 +57,11 @@ class EnigmaTest < Minitest::Test
     assert_equal "5", enigma.d_offset("040895")
   end
 
-  def test_total_shift
-skip
+  def test_combined_shift_per_key
     enigma = Enigma.new
-    assert_equal [3, 27, 73, 20], enigma.total_shift("02715", "040895")
+    enigma.stubs(:generate_key).returns('02715')
+    enigma.date_shift("040895")
+    assert_equal "3", enigma.a_total_rotation
   end
 
   def test_it_can_encrypt

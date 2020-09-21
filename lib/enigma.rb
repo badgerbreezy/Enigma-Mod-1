@@ -55,6 +55,19 @@ class Enigma
     date_shift(date)[0]
   end
 
+  def b_offset(date)
+    date_shift(date)[1]
+  end
+
+  def c_offset(date)
+    date_shift(date)[2]
+  end
+
+  def d_offset(date)
+    date_shift(date)[3]
+  end
+
+
 
 
   # def total_shift(key, date)
