@@ -48,10 +48,10 @@ class EnigmaTest < Minitest::Test
   def test_rotate_letter
     enigma = Enigma.new
     # binding.pry
-    assert_equal "d", enigma.a_rotation("02715", "040895")
-    assert_equal "a", enigma.b_rotation("02715", "040895")
-    assert_equal "t", enigma.c_rotation("02715", "040895")
-    assert_equal "u", enigma.d_rotation("02715", "040895")
+    assert_equal "k", enigma.a_rotation("h", "02715", "040895")
+    assert_equal "e", enigma.b_rotation("e", "02715", "040895")
+    assert_equal "d", enigma.c_rotation("l", "02715", "040895")
+    assert_equal "e", enigma.d_rotation("l", "02715", "040895")
 
   end
 
