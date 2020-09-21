@@ -29,10 +29,10 @@ class Enigma
 
   def date_shift(date)
     date_shifted = (date.to_i ** 2).to_s
-    last_four_digits = date_shifted[-4..-1].split("")
-    last_four_digits.map do |number|
-      number.to_i
-    end
+    last_four_digits = date_shifted[-4..-1]
+    # last_four_digits.map do |number|
+    #   number.to_i
+    # end
   end
 
   def a_rotation
@@ -51,6 +51,9 @@ class Enigma
     generate_key[3..4]
   end
 
+  def a_offset(date)
+    date_shift(date)[0]
+  end
 
 
 
