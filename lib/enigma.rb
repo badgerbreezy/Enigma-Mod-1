@@ -24,8 +24,9 @@ class Enigma
   end
 
   def date_shift(date)
-    date_shifted = ((date.to_i ** 2) % 10000).to_s.split("")
-    date_shifted.map do |number|
+    date_shifted = (date.to_i ** 2).to_s
+    last_four_digits = date_shifted[-4..-1].split("")
+    last_four_digits.map do |number|
       number.to_i
     end
   end
@@ -39,27 +40,58 @@ class Enigma
     end
   end
 
-  def encrypt(encryption, key, date)
-    encryption_array = encryption.split("")
-    encryption_letters = encryption_array.map do |letter|
+  def encrypt(message, key, date)
+    message_array = message.downcase.split("")
+    message_ordinals_array = message_array.map do |letter|
       letter.ord
-    end
+    end.each_slice(4).to_a
 
-    encryption_fours = encryption_letters.each_slice(4).to_a
-    encryption_fours 
+
+
+
+    ordinals_array_shift = []
+    # encryption_fours = encryption_numbers.each_slice(4).to_a
+    message_ordinals_array.each do |sub_array|
+      ordinals_array_shift << sub_array
+      ordinals_array_shift << total_shift(key, date)
+    end
+    message_ordinals_sliced = ordinals_array_shift.each_slice(2).to_a
     require 'Pry';binding.pry
-    #   sub_array.map do |letter|
-    #     letter.ord
+    # message_ordinals_shifted = message_ordinals_sliced.map do |sub_array|
+    #   sub_array[0].zip(sub_array[1])
+    # end
+    #
+    # shift = message_ordinals_shifted.map do |sub_array|
+    #   require 'Pry';binding.pry
+    #   sub_array.map do |sub_sub_array|
+    #     sub_sub_array.sum
     #   end
     # end
-    # encryption_fours
-# require 'Pry';binding.pry
+    #
+    # letters = shift.map do |sub_array|
+    #   sub_array.map do |number|
+    #     number.chr
+    #   end
+    # end
 
-    key_shift = sum.each_cons(2).map do |sub_array| #["0, 2"] ["2"]
-      sub_array.join
-    end
 
-    encryption_hash = {encryption: encrypted, key: key, date: date}
+
+
+    # encryption_shifted = Array.new(message_ordinals_sliced.map(&:length).max) do |i|
+    #   message_ordinals_sliced.map do |e|
+    #     e[i]
+    #   end
+    # end
+
+    #
+
+    # message_ordinals_array.each do |sub_array|
+    #   sub_array
+    # letter_range = message_ordinals_array.length
+    # letter.
+
+
+    # encryption_hash = {encryption: encrypted, key: key, date: date}
   end
 
   def encrypt1(encryption, key, date)

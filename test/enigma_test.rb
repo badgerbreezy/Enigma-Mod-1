@@ -18,6 +18,7 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:generate_key).returns('02715')
 
     assert_equal "02715", enigma.generate_key
+    # binding.pry
   end
 
   def test_it_can_shift_key
@@ -26,7 +27,7 @@ class EnigmaTest < Minitest::Test
     assert_equal [02, 27, 71, 15], enigma.key_shift("02715")
   end
 
-  def test_it_can_shift_date
+  def test_it_can_shift_date # test more later
     enigma = Enigma.new
     assert_equal [1, 0, 2, 5], enigma.date_shift("040895")
   end
@@ -38,6 +39,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_encrypt
+    
     enigma = Enigma.new
     assert_equal ({
         encryption: "keder ohulw",
