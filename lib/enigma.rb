@@ -6,9 +6,9 @@ class Enigma
     characters = ("a".."z").to_a << " "
   end
 
-  def characters_as_hash
-    Hash[characters.zip(1..27)]
-  end
+  # def characters_as_hash
+  #   Hash[characters.zip(1..27)]
+  # end
 
   def generate_key
     rand(9 ** 5).to_s.rjust(5, '0')
@@ -43,6 +43,33 @@ class Enigma
       sub_array.sum
     end
   end
+
+  def a_rotation(key, date)
+    a_rotation = characters.rotate(total_shift(key, date)[0])
+    a_rotation[0]
+  end
+
+
+  def b_rotation(key, date)
+    b_rotation = characters.rotate(total_shift(key, date)[1])
+    b_rotation[0]
+  end
+
+
+  def c_rotation(key, date)
+    c_rotation = characters.rotate(total_shift(key, date)[2])
+    c_rotation[0]
+  end
+
+
+  def d_rotation(key, date)
+    d_rotation = characters.rotate(total_shift(key, date)[3])
+    d_rotation[0]
+  end
+
+
+
+
 
 
 
