@@ -67,6 +67,21 @@ class Enigma
     date_shift(date)[3]
   end
 
+  def a_total_rotation(date)
+    a_rotation.to_i + a_offset(date).to_i
+  end
+
+  def b_total_rotation(date)
+    b_rotation.to_i + b_offset(date).to_i
+  end
+
+  def c_total_rotation(date)
+    c_rotation.to_i + c_offset(date).to_i
+  end
+
+  def d_total_rotation(date)
+    d_rotation.to_i + d_offset(date).to_i
+  end
 
 
 
