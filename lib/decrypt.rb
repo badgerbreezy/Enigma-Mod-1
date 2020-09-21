@@ -1,6 +1,4 @@
-require './lib/enigma'
-
-class Decrypt < Enigma
+class Decrypt
   attr_reader :characters, :date, :key
 
   def initialize(key)

@@ -1,5 +1,3 @@
-
-
 class Enigma
   attr_reader :date, :encrypt, :key, :message
   def initialize
