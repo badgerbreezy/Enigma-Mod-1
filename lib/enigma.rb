@@ -49,4 +49,6 @@ class Enigma
       sub_array.sum
     end
   end
+
+
 end
