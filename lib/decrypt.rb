@@ -3,39 +3,70 @@ class Decrypt
 
   def initialize(key)
     @key = key
-    @date = date
-    @characters = Enigma.new.characters
-    @total_shift = Enigma.new.total_shift(key)
-    @date = Enigma.new.date
+    @date = Date.today.strftime("%d%m%y")
+    @characters = CharactersList.new.characters
   end
 
+  def generate_key
+    rand(9 ** 5).to_s.rjust(5, '0')
+  end
 
-  def decryption_shift
-    @total_shift.map do |shift|
+  def key_shift(key)
+    key_array = key.split("")
+    sum = key_array.map do |number|
+      number.to_i
+    end
+    key_shift = sum.each_cons(2).map do |sub_array| #["0, 2"] ["2"]
+      sub_array.join
+    end
+    key_shift.map do |number|
+      number.to_i
+    end
+  end
+
+  def date_shift
+    date_shifted = (@date.to_i ** 2).to_s
+    last_four_digits = date_shifted[-4..-1].split("")
+    last_four_digits.map do |number|
+      number.to_i
+    end
+  end
+
+  def total_shift(key)
+    key_date = []
+    key_date << key_shift(key)
+    key_date << date_shift
+    key_date.transpose.map do |sub_array|
+      sub_array.sum
+    end
+  end
+
+  def decryption_shift(key)
+    total_shift(key).map do |shift|
       -shift
     end
   end
 
   def a_rotation(letter, key)
-    a_rotation = @characters.rotate(decryption_shift[0])
+    a_rotation = @characters.rotate(decryption_shift(key)[0])
     Hash[characters.zip(a_rotation)][letter]
   end
 
 
   def b_rotation(letter, key)
-    b_rotation = @characters.rotate(decryption_shift[1])
+    b_rotation = @characters.rotate(decryption_shift(key)[1])
     Hash[characters.zip(b_rotation)][letter]
   end
 
 
   def c_rotation(letter, key)
-    c_rotation = @characters.rotate(decryption_shift[2])
+    c_rotation = @characters.rotate(decryption_shift(key)[2])
     Hash[characters.zip(c_rotation)][letter]
   end
 
 
   def d_rotation(letter, key)
-    d_rotation = @characters.rotate(decryption_shift[3])
+    d_rotation = @characters.rotate(decryption_shift(key)[3])
     Hash[characters.zip(d_rotation)][letter]
   end
 
