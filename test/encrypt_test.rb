@@ -4,7 +4,6 @@ require 'Pry'
 require 'mocha/minitest'
 require 'date'
 require './lib/encrypt'
-require './lib/encrypt'
 require './lib/characters_list'
 
 class EncryptTest < Minitest::Test
@@ -38,7 +37,6 @@ class EncryptTest < Minitest::Test
   def test_it_can_generate_date # test more later
     encrypt = Encrypt.new
     Date.stubs(:today).returns(Date.new(1995,8,4))
-    encrypt.stubs(:key).returns('02715')
     assert_equal [6, 4, 0, 0], encrypt.date_shift
   end
 
@@ -46,6 +44,7 @@ class EncryptTest < Minitest::Test
     Date.stubs(:today).returns(Date.new(1995,8,4))
     encrypt = Encrypt.new
     encrypt.stubs(:key).returns('02715')
+
     assert_equal [3, 27, 73, 20], encrypt.total_shift
     assert_equal [3, 27, 73, 20], encrypt.total_shift
   end
@@ -54,6 +53,7 @@ class EncryptTest < Minitest::Test
     Date.stubs(:today).returns(Date.new(1995,8,4))
     encrypt = Encrypt.new
     encrypt.stubs(:key).returns('02715')
+
     assert_equal "k", encrypt.a_rotation("h")
     assert_equal "e", encrypt.b_rotation("e")
     assert_equal "d", encrypt.c_rotation("l")
@@ -64,6 +64,10 @@ class EncryptTest < Minitest::Test
     Date.stubs(:today).returns(Date.new(1995,8,4))
     encrypt = Encrypt.new
     encrypt.stubs(:key).returns('02715')
-    assert_equal ({:encryption =>"keder ohulw", :key => "02715", :date=> "040895"}), encrypt.encrypt("hello world")
+    assert_equal ({
+      encryption: "keder ohulw",
+      key: "02715",
+      date: => "040895"
+      }), encrypt.encrypt("hello world")
   end
 end
