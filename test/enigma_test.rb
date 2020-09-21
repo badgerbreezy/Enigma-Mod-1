@@ -35,36 +35,13 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_generate_date # test more later
     enigma = Enigma.new
-    assert_equal "1025", enigma.date_shift("040895")
+    assert_equal [1, 0, 2, 5], enigma.date_shift("040895")
   end
 
-  def test_it_can_rotate_each_key
+  def test_total_shift
     enigma = Enigma.new
-    enigma.stubs(:generate_key).returns('02715')
 
-    assert_equal "02", enigma.a_rotation
-    assert_equal "27", enigma.b_rotation
-    assert_equal "71", enigma.c_rotation
-    assert_equal "15", enigma.d_rotation
-  end
-
-  def test_it_can_offset_each_key
-    enigma = Enigma.new
-    enigma.date_shift("040895")
-    assert_equal "1", enigma.a_offset("040895")
-    assert_equal "0", enigma.b_offset("040895")
-    assert_equal "2", enigma.c_offset("040895")
-    assert_equal "5", enigma.d_offset("040895")
-  end
-
-  def test_total_rotation_per_key
-    enigma = Enigma.new
-    enigma.stubs(:generate_key).returns('02715')
-    enigma.date_shift("040895")
-    assert_equal 3, enigma.a_total_rotation("040895")
-    assert_equal 27, enigma.b_total_rotation("040895")
-    assert_equal 73, enigma.c_total_rotation("040895")
-    assert_equal 20, enigma.d_total_rotation("040895")
+    assert_equal [3, 27, 73, 20], enigma.total_shift("02715", "040895")
   end
 
   def test_it_can_encrypt

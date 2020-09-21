@@ -29,70 +29,22 @@ class Enigma
 
   def date_shift(date)
     date_shifted = (date.to_i ** 2).to_s
-    last_four_digits = date_shifted[-4..-1]
-    # last_four_digits.map do |number|
-    #   number.to_i
-    # end
+    last_four_digits = date_shifted[-4..-1].split("")
+    last_four_digits.map do |number|
+      number.to_i
+    end
   end
 
-  def a_rotation
-    generate_key[0..1]
-  end
-
-  def b_rotation
-    generate_key[1..2]
-  end
-
-  def c_rotation
-    generate_key[2..3]
-  end
-
-  def d_rotation
-    generate_key[3..4]
-  end
-
-  def a_offset(date)
-    date_shift(date)[0]
-  end
-
-  def b_offset(date)
-    date_shift(date)[1]
-  end
-
-  def c_offset(date)
-    date_shift(date)[2]
-  end
-
-  def d_offset(date)
-    date_shift(date)[3]
-  end
-
-  def a_total_rotation(date)
-    a_rotation.to_i + a_offset(date).to_i
-  end
-
-  def b_total_rotation(date)
-    b_rotation.to_i + b_offset(date).to_i
-  end
-
-  def c_total_rotation(date)
-    c_rotation.to_i + c_offset(date).to_i
-  end
-
-  def d_total_rotation(date)
-    d_rotation.to_i + d_offset(date).to_i
+  def total_shift(key, date)
+    key_date = []
+    key_date << key_shift(key)
+    key_date << date_shift(date)
+    key_date.transpose.map do |sub_array|
+      sub_array.sum
+    end
   end
 
 
-
-  # def total_shift(key, date)
-  #   key_date = []
-  #   key_date << key_shift(key)
-  #   key_date << date_shift(date)
-  #   key_date.transpose.map do |sub_array|
-  #     sub_array.sum
-  #   end
-  # end
 
   def encrypt(message, key, date)
     message_array = message.downcase.split("")
