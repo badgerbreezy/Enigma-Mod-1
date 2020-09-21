@@ -6,6 +6,10 @@ class Enigma
     characters = ("a".."z").to_a << " "
   end
 
+  def characters_as_hash
+    Hash[characters.zip(1..27)]
+  end
+
   def generate_key
     rand(9 ** 5).to_s.rjust(5, '0')
   end
@@ -31,14 +35,20 @@ class Enigma
     end
   end
 
-  def total_shift(key, date)
-    key_date = []
-    key_date << key_shift(key)
-    key_date << date_shift(date)
-    key_date.transpose.map do |sub_array|
-      sub_array.sum
-    end
+  def a_rotation
+    generate_key[0..1]
   end
+
+
+
+  # def total_shift(key, date)
+  #   key_date = []
+  #   key_date << key_shift(key)
+  #   key_date << date_shift(date)
+  #   key_date.transpose.map do |sub_array|
+  #     sub_array.sum
+  #   end
+  # end
 
   def encrypt(message, key, date)
     message_array = message.downcase.split("")
