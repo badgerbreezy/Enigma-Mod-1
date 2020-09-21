@@ -13,11 +13,11 @@ class DecryptTest < Minitest::Test
     assert_instance_of Decrypt, decrypt
   end
 
-  def test_total_shift
+  def test_decryption_shift
     enigma = Enigma.new
     decrypt = Decrypt.new("02715", "040895")
 
-    assert_equal [3, 27, 73, 20], decrypt.total_shift("02715", "040895")
+    assert_equal [3, 27, 73, 20], decrypt.decryption_shift
   end
 
   def test_rotate_letter
@@ -33,9 +33,10 @@ class DecryptTest < Minitest::Test
     enigma = Enigma.new
     decrypt = Decrypt.new("02715", "040895")
     assert_equal ({
-        encryption: "keder ohulw",
+        decryption: "hello world",
         key: "02715",
         date: "040895"
-      }), decrypt.decrypt("hello world", "02715", "040895")
+      }), decrypt.decrypt("keder ohulw", "02715", "040895")
   end
+
 end

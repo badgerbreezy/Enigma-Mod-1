@@ -37,18 +37,12 @@ class Enigma
     end
   end
 
-
-
-  def decrypt(message, key, date)
-    message_array = message.downcase.split("").each_slice(4).to_a
-    decrypted_array = []
-    message_array.each do |sub_array|
-      decrypted_array << a_rotation(sub_array[0], key, date)
-      decrypted_array << b_rotation(sub_array[1], key, date)
-      decrypted_array << c_rotation(sub_array[2], key, date)
-      decrypted_array << d_rotation(sub_array[3], key, date)
+  def total_shift(key, date)
+    key_date = []
+    key_date << key_shift(key)
+    key_date << date_shift(date)
+    key_date.transpose.map do |sub_array|
+      sub_array.sum
     end
-    decrypted = decrypted_array.join
-    decryption_hash = {decryption: decrypted, key: key, date: date}
   end
 end

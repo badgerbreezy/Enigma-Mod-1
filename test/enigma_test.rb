@@ -38,13 +38,10 @@ class EnigmaTest < Minitest::Test
     assert_equal [1, 0, 2, 5], enigma.date_shift("040895")
   end
 
-  def test_it_can_decrypt
+  def test_total_shift
     enigma = Enigma.new
-    assert_equal ({
-        decryption: "hello world",
-        key: "02715",
-        date: "040895"
-      }), enigma.decrypt("keder ohulw", "02715", "040895")
+
+    assert_equal [3, 27, 73, 20], enigma.total_shift("02715", "040895")
   end
 end
 

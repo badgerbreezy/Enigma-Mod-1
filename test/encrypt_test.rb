@@ -13,11 +13,11 @@ class EncryptTest < Minitest::Test
     assert_instance_of Encrypt, encrypt
   end
 
-  def test_total_shift
+  def test_encryption_shift
     enigma = Enigma.new
     encrypt = Encrypt.new("02715", "040895")
 
-    assert_equal [3, 27, 73, 20], encrypt.total_shift("02715", "040895")
+    assert_equal [3, 27, 73, 20], encrypt.encryption_shift
   end
 
   def test_rotate_letter

@@ -3,40 +3,34 @@ class Encrypt
 
   def initialize(key, date)
     @characters = Enigma.new.characters
-    @key_shift = Enigma.new.key_shift(key)
-    @date_shift = Enigma.new.date_shift(date)
+    @total_shift = Enigma.new.total_shift(key, date)
   end
 
 
-  def total_shift(key, date)
-    key_date = []
-    key_date << @key_shift
-    key_date << @date_shift
-    key_date.transpose.map do |sub_array|
-      sub_array.sum
-    end
+  def encryption_shift
+    @total_shift
   end
 
   def a_rotation(letter, key, date)
-    a_rotation = @characters.rotate(total_shift(key, date)[0])
+    a_rotation = @characters.rotate(encryption_shift[0])
     Hash[characters.zip(a_rotation)][letter]
   end
 
 
   def b_rotation(letter, key, date)
-    b_rotation = @characters.rotate(total_shift(key, date)[1])
+    b_rotation = @characters.rotate(encryption_shift[1])
     Hash[characters.zip(b_rotation)][letter]
   end
 
 
   def c_rotation(letter, key, date)
-    c_rotation = @characters.rotate(total_shift(key, date)[2])
+    c_rotation = @characters.rotate(encryption_shift[2])
     Hash[characters.zip(c_rotation)][letter]
   end
 
 
   def d_rotation(letter, key, date)
-    d_rotation = @characters.rotate(total_shift(key, date)[3])
+    d_rotation = @characters.rotate(encryption_shift[3])
     Hash[characters.zip(d_rotation)][letter]
   end
 
