@@ -8,7 +8,9 @@ class Decrypt
 
 
   def decryption_shift
-    @total_shift
+    @total_shift.map do |shift|
+      -shift
+    end
   end
 
   def a_rotation(letter, key, date)
