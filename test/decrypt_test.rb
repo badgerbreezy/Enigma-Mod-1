@@ -9,7 +9,7 @@ require './lib/characters_list'
 class DecryptTest < Minitest::Test
   def test_it_exists_and_has_attributes
     Date.stubs(:today).returns(Date.new(1995,8,4))
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:key).returns('02715')
 
     assert_instance_of Decrypt, decrypt
@@ -18,14 +18,14 @@ class DecryptTest < Minitest::Test
   end
 
   def test_it_can_generate_key
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:generate_key).returns('02715')
 
     assert_equal "02715", decrypt.generate_key
   end
 
   def test_it_can_shift_key
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:key).returns('02715')
 
     assert_equal [02, 27, 71, 15], decrypt.key_shift
@@ -40,7 +40,7 @@ class DecryptTest < Minitest::Test
 
   def test_total_shift
     Date.stubs(:today).returns(Date.new(1995,8,4))
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:key).returns('02715')
 
     assert_equal [3, 27, 73, 20], decrypt.total_shift
@@ -49,7 +49,7 @@ class DecryptTest < Minitest::Test
 
   def test_decryption_shift
     Date.stubs(:today).returns(Date.new(1995,8,4))
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:key).returns('02715')
 
     assert_equal [-3, -27, -73, -20], decrypt.decryption_shift
@@ -57,7 +57,7 @@ class DecryptTest < Minitest::Test
 
   def test_rotate_letter
     Date.stubs(:today).returns(Date.new(1995,8,4))
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:key).returns('02715')
 
     assert_equal "h", decrypt.a_rotation("k")
@@ -68,7 +68,7 @@ class DecryptTest < Minitest::Test
 
   def test_it_can_decrypt
     Date.stubs(:today).returns(Date.new(1995,8,4))
-    decrypt = Decrypt.new("02715")
+    decrypt = Decrypt.new
     decrypt.stubs(:key).returns('02715')
     assert_equal ({
         decryption: "hello world",
