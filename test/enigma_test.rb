@@ -43,6 +43,9 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:generate_key).returns('02715')
 
     assert_equal "02", enigma.a_rotation
+    assert_equal "27", enigma.b_rotation
+    assert_equal "71", enigma.c_rotation
+    assert_equal "15", enigma.d_rotation
   end
 
   def test_total_shift
