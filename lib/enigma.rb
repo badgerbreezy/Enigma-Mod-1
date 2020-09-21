@@ -79,4 +79,17 @@ class Enigma
     encrypted = encrypted_array.join
     encryption_hash = {encryption: encrypted, key: key, date: date}
   end
+
+  def decrypt(message, key, date)
+    message_array = message.downcase.split("").each_slice(4).to_a
+    decrypted_array = []
+    message_array.each do |sub_array|
+      decrypted_array << a_rotation(sub_array[0], key, date)
+      decrypted_array << b_rotation(sub_array[1], key, date)
+      decrypted_array << c_rotation(sub_array[2], key, date)
+      decrypted_array << d_rotation(sub_array[3], key, date)
+    end
+    decrypted = decrypted_array.join
+    decryption_hash = {decryption: decrypted, key: key, date: date}
+  end
 end
