@@ -48,6 +48,11 @@ class EnigmaTest < Minitest::Test
     assert_equal "15", enigma.d_rotation
   end
 
+  def test_it_can_offset_each_key
+    enigma = Enigma.new
+    assert_equal "01", enigma.a_offset
+  end
+
   def test_total_shift
 skip
     enigma = Enigma.new

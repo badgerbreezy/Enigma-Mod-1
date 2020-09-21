@@ -39,6 +39,19 @@ class Enigma
     generate_key[0..1]
   end
 
+  def b_rotation
+    generate_key[1..2]
+  end
+
+  def c_rotation
+    generate_key[2..3]
+  end
+
+  def d_rotation
+    generate_key[3..4]
+  end
+
+
 
 
   # def total_shift(key, date)
