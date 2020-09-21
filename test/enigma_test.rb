@@ -7,11 +7,11 @@ require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
   def test_it_exists_and_has_attributes
-    Date.stubs(:today).returns(Date.new(210920))
+    Date.stubs(:today).returns(Date.new(1995,8,4))
     enigma = Enigma.new
 
     assert_instance_of Enigma, enigma
-    assert_equal "21/09/20", enigma.date
+    assert_equal "040895", enigma.date
   end
 
   def test_it_can_generate_key
@@ -36,13 +36,16 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_generate_date # test more later
     enigma = Enigma.new
-    assert_equal [1, 0, 2, 5], enigma.date_shift("040895")
+    Date.stubs(:today).returns(Date.new(1995,8,4))
+    assert_equal [6, 4, 0, 0], enigma.date_shift
   end
 
   def test_total_shift
+    Date.stubs(:today).returns(Date.new(1995,8,4))
     enigma = Enigma.new
-
-    assert_equal [3, 27, 73, 20], enigma.total_shift("02715", "040895")
+    date = Date.new
+    assert_equal [3, 27, 73, 20], enigma.total_shift("02715")
+    assert_equal [3, 27, 73, 20], enigma.total_shift("02715")
   end
 end
 

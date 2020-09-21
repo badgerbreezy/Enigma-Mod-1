@@ -1,10 +1,13 @@
 class Enigma
   attr_reader :date
   def initialize
-    @date = Date.today
+    @date = Date.today.strftime("%d%m%y")
   end
 
-  
+  # def date
+  #   @date = date
+  # end
+
   def characters
     characters = ("a".."z").to_a << " "
   end
@@ -30,18 +33,18 @@ class Enigma
     end
   end
 
-  def date_shift(date)
-    date_shifted = (date.to_i ** 2).to_s
+  def date_shift
+    date_shifted = (@date.to_i ** 2).to_s
     last_four_digits = date_shifted[-4..-1].split("")
     last_four_digits.map do |number|
       number.to_i
     end
   end
 
-  def total_shift(key, date)
+  def total_shift(key)
     key_date = []
     key_date << key_shift(key)
-    key_date << date_shift(date)
+    key_date << date_shift
     key_date.transpose.map do |sub_array|
       sub_array.sum
     end
