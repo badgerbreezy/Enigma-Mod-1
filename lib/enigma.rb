@@ -68,70 +68,15 @@ class Enigma
   end
 
   def encrypt(message, key, date)
-
-
-
-
-
-
-
-
-  def encrypt(message, key, date)
-    message_array = message.downcase.split("")
-    message_ordinals_array = message_array.map do |letter|
-      letter.ord
-    end.each_slice(4).to_a
-
-
-
-
-    ordinals_array_shift = []
-    # encryption_fours = encryption_numbers.each_slice(4).to_a
-    message_ordinals_array.each do |sub_array|
-      ordinals_array_shift << sub_array
-      ordinals_array_shift << total_shift(key, date)
+    message_array = message.downcase.split("").each_slice(4).to_a
+    encrypted_array = []
+    message_array.each do |sub_array|
+      encrypted_array << a_rotation(sub_array[0], key, date)
+      encrypted_array << b_rotation(sub_array[1], key, date)
+      encrypted_array << c_rotation(sub_array[2], key, date)
+      encrypted_array << d_rotation(sub_array[3], key, date)
     end
-    message_ordinals_sliced = ordinals_array_shift.each_slice(2).to_a
-    require 'Pry';binding.pry
-    # message_ordinals_shifted = message_ordinals_sliced.map do |sub_array|
-    #   sub_array[0].zip(sub_array[1])
-    # end
-    #
-    # shift = message_ordinals_shifted.map do |sub_array|
-    #   require 'Pry';binding.pry
-    #   sub_array.map do |sub_sub_array|
-    #     sub_sub_array.sum
-    #   end
-    # end
-    #
-    # letters = shift.map do |sub_array|
-    #   sub_array.map do |number|
-    #     number.chr
-    #   end
-    # end
-
-
-
-
-    # encryption_shifted = Array.new(message_ordinals_sliced.map(&:length).max) do |i|
-    #   message_ordinals_sliced.map do |e|
-    #     e[i]
-    #   end
-    # end
-
-    #
-
-    # message_ordinals_array.each do |sub_array|
-    #   sub_array
-    # letter_range = message_ordinals_array.length
-    # letter.
-
-
-    # encryption_hash = {encryption: encrypted, key: key, date: date}
-  end
-
-  def encrypt1(encryption, key, date)
-    encryption_hash = Hash.new
-
+    encrypted = encrypted_array.join
+    encryption_hash = {encryption: encrypted, key: key, date: date}
   end
 end
