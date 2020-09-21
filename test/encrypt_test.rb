@@ -36,9 +36,6 @@ class EncryptTest < Minitest::Test
     Date.stubs(:today).returns(Date.new(1995,8,4))
     enigma = Enigma.new
     encrypt = Encrypt.new("02715")
-    assert_equal ({
-        encryption: "keder ohulw",
-        key: "02715"
-      }), encrypt.encrypt("hello world", "02715")
+    assert_equal ({:encryption=>"keder ohulw", :key=>"02715"}), encrypt.encrypt("hello world", "02715")
   end
 end

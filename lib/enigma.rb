@@ -1,7 +1,13 @@
+
+
 class Enigma
-  attr_reader :date
+  attr_reader :date, :encrypt, :key, :message
   def initialize
+    @message = message
+    @key = key
     @date = Date.today.strftime("%d%m%y")
+    @encrypt = Encrypt.new(key)
+    @decrypt = Decrypt.new(key)
   end
 
   # def date
@@ -50,5 +56,9 @@ class Enigma
     end
   end
 
+  def encrypt(message, key)
 
+    encrypted = @encryption.join
+    encryption_hash = {encryption: encrypted, key: key}
+  end
 end

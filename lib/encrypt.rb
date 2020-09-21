@@ -1,7 +1,11 @@
-class Encrypt
-  attr_reader :characters, :date
+require './lib/enigma'
+
+class Encrypt < Enigma
+  attr_reader :characters, :date, :key
 
   def initialize(key)
+    @key = key
+    @date = date
     @characters = Enigma.new.characters
     @total_shift = Enigma.new.total_shift(key)
     @date = Enigma.new.date
