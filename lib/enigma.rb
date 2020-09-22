@@ -1,17 +1,16 @@
 class Enigma
-  attr_reader :date, :encrypt, :decrypt, :key, :message
+  attr_reader :encrypt, :decrypt, :message
   def initialize
     @message = message
-    @key = key
-    @encrypt = Encrypt.new(key)
-    @decrypt = Decrypt.new(key)
+    @encrypt = Encrypt.new
+    @decrypt = Decrypt.new
   end
 
-  def encrypt(message, key)
-    @encrypt.encrypt(message, key)
+  def encrypt(message)
+    @encrypt.encrypt(message)
   end
 
-  def decrypt(message, key)
-    @decrypt.decrypt(message, key)
+  def decrypt(message)
+    @decrypt.decrypt(message)
   end
 end
