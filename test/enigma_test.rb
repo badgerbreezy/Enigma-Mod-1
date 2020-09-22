@@ -6,7 +6,6 @@ require 'date'
 require './lib/enigma'
 require './lib/encryption'
 require './lib/decryption'
-require './lib/characters_list'
 
 class EnigmaTest < Minitest::Test
   def test_it_exists_and_has_attributes

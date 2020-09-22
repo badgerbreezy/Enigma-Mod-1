@@ -1,5 +1,4 @@
 require 'date'
-# require './lib/characters_list'
 require './lib/shiftables'
 require './lib/rotatables'
 

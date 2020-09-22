@@ -1,5 +1,4 @@
 require 'date'
-require './lib/characters_list'
 require './lib/shiftables'
 require './lib/rotatables'
 
@@ -11,7 +10,7 @@ class Decryption
   def initialize
     @key = ARGV[2]
     @date = ARGV[3]
-    @characters = CharactersList.new.characters
+    @characters = ("a".."z").to_a << " "
   end
 
   def shift

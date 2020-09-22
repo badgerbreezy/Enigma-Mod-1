@@ -4,7 +4,6 @@ require 'Pry'
 require 'mocha/minitest'
 require 'date'
 require './lib/encryption'
-require './lib/characters_list'
 
 class EncryptionTest < Minitest::Test
   def test_it_exists_and_has_attributes
