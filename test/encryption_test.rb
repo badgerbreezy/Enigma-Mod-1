@@ -72,12 +72,12 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_it_can_encrypt_message
-    decryption = Decryption.new
-    decryption = Decryption.new
-    decryption.stubs(:date).returns('040895')
-    decryption.stubs(:key).returns('02715')
+    encryption = Encryption.new
+    encryption = Encryption.new
+    encryption.stubs(:date).returns('040895')
+    encryption.stubs(:key).returns('02715')
 
-    assert_equal "keder ohulw", decryption.enigma_rotation("hello world")
+    assert_equal "keder ohulw", encryption.enigma_rotation("hello world")
   end
 
   def test_it_can_encrypt
