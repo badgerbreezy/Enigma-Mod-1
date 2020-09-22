@@ -40,5 +40,4 @@ class EnigmaTest < Minitest::Test
         date: "040895"
         }), enigma.decrypt(encrypted[:encryption])
   end
-
 end

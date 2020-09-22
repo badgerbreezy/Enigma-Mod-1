@@ -1,3 +1,6 @@
+require 'date'
+require './lib/characters_list'
+
 class Encryption
   attr_reader :characters, :date, :key
 

@@ -13,6 +13,7 @@ class CharactersListTest < Minitest::Test
 
   def test_length_of_characters_list
     characters_list = CharactersList.new
-    assert_equal 27, characters_list.characters.length 
+    assert_equal 27, characters_list.characters.length
+    assert_equal ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "], characters_list.characters
   end
 end

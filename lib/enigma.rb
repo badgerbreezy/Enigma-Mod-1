@@ -1,4 +1,5 @@
-require './lib/encrypt'
+require './lib/encryption'
+require './lib/decryption'
 
 class Enigma
   attr_reader :encrypt, :decrypt, :message
@@ -16,11 +17,13 @@ class Enigma
     @decryption.decrypt(message)
   end
 
-  file_io = FileIO.new
-  message = file_io.message
-  encryptor = Encrypt.new
-    # ('12345', 280715)
-  encryptor.get_rotations
-  file_io.output(encryptor.encrypt(message))
-  puts encryptor.print_message
+
 end
+
+# encrypt = .new
+# message = file_io.message
+# encryptor = Encrypt.new
+#     # ('12345', 280715)
+# encryptor.get_rotations
+# file_io.output(encryptor.encrypt(message))
+# puts encryptor.print_message
