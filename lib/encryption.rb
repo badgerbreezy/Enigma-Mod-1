@@ -20,7 +20,7 @@ class Encryption
     sum = key_array.map do |number|
       number.to_i
     end
-    key_shift = sum.each_cons(2).map do |sub_array| #["0, 2"] ["2"]
+    key_shift = sum.each_cons(2).map do |sub_array|
       sub_array.join
     end
     key_shift.map do |number|
