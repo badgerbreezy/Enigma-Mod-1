@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'Pry'
 require 'mocha/minitest'
-require 'date'
 require './lib/encryption'
 
 class EncryptionTest < Minitest::Test
