@@ -45,7 +45,7 @@ class DecryptionTest < Minitest::Test
     decryption.stubs(:date).returns('040895')
     decryption.stubs(:key).returns('02715')
 
-    assert_equal [-3, -27, -73, -20], decryption.decryption_shift
+    assert_equal [-3, -27, -73, -20], decryption.shift
   end
 
   def test_its_can_rotate_letter
