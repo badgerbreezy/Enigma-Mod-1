@@ -15,22 +15,27 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_can_encryp_and_decrypt
+  def test_it_can_encrypt_and_decrypt
     Date.stubs(:today).returns(Date.new(1995,8,4))
     enigma = Enigma.new
     encryption = Encryption.new
     decryption = Decryption.new
-    enigma.stubs(:encrypt).returns({
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "040895"
-      })
-
+    enigma.encryption.stubs(:key).returns('02715')
+binding.pry
     assert_equal ({
       encryption: "keder ohulw",
       key: "02715",
       date: "040895"
       }), enigma.encrypt("hello world")
+
     encrypted = enigma.encrypt("hello world")
+
+    enigma.decryption.stubs(:key).returns('02715')
+
+    assert_equal ({
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+      }), enigma.decrypt(encrypted[:encryption])
   end
 end
