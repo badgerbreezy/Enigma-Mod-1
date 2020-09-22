@@ -17,6 +17,18 @@ class DecryptionTest < Minitest::Test
     assert_equal "02715", decryption.key
   end
 
+  def test_it_can_create_key_array
+    decryption = Decryption.new
+    decryption.stubs(:key).returns('02715')
+    assert_equal [0, 2, 7, 1, 5], decryption.key_array
+  end
+
+  def test_it_can_join_key_array
+    decryption = Decryption.new
+    decryption.stubs(:key).returns('02715')
+    assert_equal ['02', '27', '71', '15'], decryption.key_array_join
+  end
+
   def test_it_can_shift_key
     decryption = Decryption.new
     decryption.stubs(:key).returns('02715')
@@ -45,7 +57,7 @@ class DecryptionTest < Minitest::Test
     decryption.stubs(:date).returns('040895')
     decryption.stubs(:key).returns('02715')
 
-    assert_equal [-3, -27, -73, -20], decryption.decryption_shift
+    assert_equal [-3, -27, -73, -20], decryption.shift
   end
 
   def test_its_can_rotate_letter

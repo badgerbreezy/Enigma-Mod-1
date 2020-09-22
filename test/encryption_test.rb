@@ -26,10 +26,21 @@ class EncryptionTest < Minitest::Test
     assert_equal "02715", encryption.generate_key
   end
 
+  def test_it_can_create_key_array
+    encryption = Encryption.new
+    encryption.stubs(:key).returns('02715')
+    assert_equal [0, 2, 7, 1, 5], encryption.key_array
+  end
+
+  def test_it_can_join_key_array
+    encryption = Encryption.new
+    encryption.stubs(:key).returns('02715')
+    assert_equal ['02', '27', '71', '15'], encryption.key_array_join
+  end
+
   def test_it_can_shift_key
     encryption = Encryption.new
     encryption.stubs(:key).returns('02715')
-    assert_equal "02715", encryption.key
 
     assert_equal [02, 27, 71, 15], encryption.key_shift
   end
