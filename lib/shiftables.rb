@@ -1,10 +1,13 @@
 module Shiftable
-  def key_shift
+  def key_array
     key_array = key.split("")
-    sum = key_array.map do |number|
+    key_array.map do |number|
       number.to_i
     end
-    key_shift = sum.each_cons(2).map do |sub_array|
+  end
+
+  def key_shift
+    key_shift = key_array.each_cons(2).map do |sub_array|
       sub_array.join
     end
     key_shift.map do |number|
