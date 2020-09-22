@@ -71,6 +71,15 @@ class EncryptionTest < Minitest::Test
     assert_equal "e", encryption.d_rotation("l")
   end
 
+  def test_it_can_encrypt_message
+    decryption = Decryption.new
+    decryption = Decryption.new
+    decryption.stubs(:date).returns('040895')
+    decryption.stubs(:key).returns('02715')
+
+    assert_equal "keder ohulw", decryption.enigma_rotation("hello world")
+  end
+
   def test_it_can_encrypt
     Date.stubs(:today).returns(Date.new(1995,8,4))
     encryption = Encryption.new
