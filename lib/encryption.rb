@@ -30,6 +30,6 @@ class Encryption
       encrypted_array << d_rotation(sub_array[3])
     end
     encrypted = encrypted_array.join
-    encryption_hash = {encryption: encrypted, key: key, date: date}
+    {encryption: encrypted, key: key, date: date}
   end
 end

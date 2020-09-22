@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'Pry'
@@ -16,8 +18,6 @@ class EnigmaTest < Minitest::Test
   def test_it_can_encrypt_and_decrypt
     Date.stubs(:today).returns(Date.new(1995,8,4))
     enigma = Enigma.new
-    encryption = Encryption.new
-    decryption = Decryption.new
     enigma.encryption.stubs(:key).returns('02715')
 
     assert_equal ({
