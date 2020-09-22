@@ -1,14 +1,13 @@
+require 'date'
+require './lib/characters_list'
+
 class Decryption
   attr_reader :characters, :date, :key
 
   def initialize
-    @key = generate_key
-    @date = Date.today.strftime("%d%m%y")
+    @key = ARGV[2]
+    @date = ARGV[3]
     @characters = CharactersList.new.characters
-  end
-
-  def generate_key
-    rand(9 ** 5).to_s.rjust(5, '0')
   end
 
   def key_shift
@@ -25,7 +24,7 @@ class Decryption
   end
 
   def date_shift
-    date_shifted = (@date.to_i ** 2).to_s
+    date_shifted = (date.to_i ** 2).to_s
     last_four_digits = date_shifted[-4..-1].split("")
     last_four_digits.map do |number|
       number.to_i
