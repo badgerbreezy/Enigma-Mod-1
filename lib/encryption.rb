@@ -1,5 +1,5 @@
 require 'date'
-require './lib/characters_list'
+# require './lib/characters_list'
 require './lib/shiftables'
 require './lib/rotatables'
 
@@ -11,7 +11,7 @@ class Encryption
   def initialize
     @key = generate_key
     @date = Date.today.strftime("%d%m%y")
-    @characters = CharactersList.new.characters
+    @characters = ("a".."z").to_a << " "
   end
 
   def generate_key
