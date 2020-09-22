@@ -80,6 +80,6 @@ class Decrypt
       decrypted_array << d_rotation(sub_array[3])
     end
     decrypted = decrypted_array.join
-    decryption_hash = {decryption: decrypted, key: key}
+    decryption_hash = {decryption: decrypted, key: key, date: date}
   end
 end

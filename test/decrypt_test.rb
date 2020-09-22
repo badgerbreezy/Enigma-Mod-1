@@ -72,7 +72,8 @@ class DecryptTest < Minitest::Test
     decrypt.stubs(:key).returns('02715')
     assert_equal ({
         decryption: "hello world",
-        key: "02715"
+        key: "02715",
+        date: "040895"
       }), decrypt.decrypt("keder ohulw")
   end
 end
