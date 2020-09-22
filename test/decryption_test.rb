@@ -20,12 +20,14 @@ class DecryptionTest < Minitest::Test
   def test_it_can_create_key_array
     decryption = Decryption.new
     decryption.stubs(:key).returns('02715')
+
     assert_equal [0, 2, 7, 1, 5], decryption.key_array
   end
 
   def test_it_can_join_key_array
     decryption = Decryption.new
     decryption.stubs(:key).returns('02715')
+
     assert_equal ['02', '27', '71', '15'], decryption.key_array_join
   end
 
@@ -36,7 +38,7 @@ class DecryptionTest < Minitest::Test
     assert_equal [02, 27, 71, 15], decryption.key_shift
   end
 
-  def test_it_can_shift_date # test more later
+  def test_it_can_shift_date
     decryption = Decryption.new
     decryption.stubs(:date).returns('040895')
 
@@ -84,6 +86,7 @@ class DecryptionTest < Minitest::Test
     decryption = Decryption.new
     decryption.stubs(:date).returns('040895')
     decryption.stubs(:key).returns('02715')
+    
     assert_equal ({
         decryption: "hello world",
         key: "02715",

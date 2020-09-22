@@ -4,8 +4,9 @@ require './lib/rotatables'
 class Encryption
   include Shiftable
   include Rotatable
-  attr_reader :characters, :date, :key
-
+  attr_reader :characters,
+              :date,
+              :key
   def initialize
     @key = generate_key
     @date = Date.today.strftime("%d%m%y")

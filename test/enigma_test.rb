@@ -5,8 +5,6 @@ require 'minitest/pride'
 require 'Pry'
 require 'mocha/minitest'
 require './lib/enigma'
-require './lib/encryption'
-require './lib/decryption'
 
 class EnigmaTest < Minitest::Test
   def test_it_exists_and_has_attributes

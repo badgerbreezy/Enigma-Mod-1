@@ -2,7 +2,9 @@ require './lib/encryption'
 require './lib/decryption'
 
 class Enigma
-  attr_reader :encryption, :decryption, :message
+  attr_reader :encryption,
+              :decryption,
+              :message
   def initialize
     @message = message
     @encryption = Encryption.new

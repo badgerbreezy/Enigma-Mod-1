@@ -4,8 +4,9 @@ require './lib/rotatables'
 class Decryption
   include Shiftable
   include Rotatable
-  attr_reader :characters, :date, :key
-
+  attr_reader :characters,
+              :date,
+              :key
   def initialize
     @key = ARGV[2]
     @date = ARGV[3]
