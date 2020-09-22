@@ -1,10 +1,10 @@
+require 'simplecov'
+SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'Pry'
 require 'mocha/minitest'
-require 'date'
 require './lib/decryption'
-require './lib/characters_list'
 
 class DecryptionTest < Minitest::Test
   def test_it_exists_and_has_attributes
@@ -20,12 +20,14 @@ class DecryptionTest < Minitest::Test
   def test_it_can_create_key_array
     decryption = Decryption.new
     decryption.stubs(:key).returns('02715')
+
     assert_equal [0, 2, 7, 1, 5], decryption.key_array
   end
 
   def test_it_can_join_key_array
     decryption = Decryption.new
     decryption.stubs(:key).returns('02715')
+
     assert_equal ['02', '27', '71', '15'], decryption.key_array_join
   end
 
@@ -36,7 +38,7 @@ class DecryptionTest < Minitest::Test
     assert_equal [02, 27, 71, 15], decryption.key_shift
   end
 
-  def test_it_can_shift_date # test more later
+  def test_it_can_shift_date
     decryption = Decryption.new
     decryption.stubs(:date).returns('040895')
 
@@ -71,10 +73,20 @@ class DecryptionTest < Minitest::Test
     assert_equal "l", decryption.d_rotation("e")
   end
 
+  def test_it_can_decrypt_encryption
+    decryption = Decryption.new
+    decryption = Decryption.new
+    decryption.stubs(:date).returns('040895')
+    decryption.stubs(:key).returns('02715')
+
+    assert_equal "hello world", decryption.enigma_rotation("keder ohulw")
+  end
+
   def test_it_can_decrypt
     decryption = Decryption.new
     decryption.stubs(:date).returns('040895')
     decryption.stubs(:key).returns('02715')
+    
     assert_equal ({
         decryption: "hello world",
         key: "02715",

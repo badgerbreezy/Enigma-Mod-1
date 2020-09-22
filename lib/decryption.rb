@@ -1,17 +1,16 @@
-require 'date'
-require './lib/characters_list'
 require './lib/shiftables'
 require './lib/rotatables'
 
 class Decryption
   include Shiftable
   include Rotatable
-  attr_reader :characters, :date, :key
-
+  attr_reader :characters,
+              :date,
+              :key
   def initialize
     @key = ARGV[2]
     @date = ARGV[3]
-    @characters = CharactersList.new.characters
+    @characters = ("a".."z").to_a << " "
   end
 
   def shift
@@ -21,15 +20,6 @@ class Decryption
   end
 
   def decrypt(message)
-    message_array = message.downcase.split("").each_slice(4).to_a
-    decrypted_array = []
-    message_array.each do |sub_array|
-      decrypted_array << a_rotation(sub_array[0])
-      decrypted_array << b_rotation(sub_array[1])
-      decrypted_array << c_rotation(sub_array[2])
-      decrypted_array << d_rotation(sub_array[3])
-    end
-    decrypted = decrypted_array.join
-    decryption_hash = {decryption: decrypted, key: key, date: date}
+    {decryption: enigma_rotation(message), key: key, date: date}
   end
 end
