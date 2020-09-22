@@ -4,8 +4,8 @@ require 'Pry'
 require 'mocha/minitest'
 require 'date'
 require './lib/enigma'
-require './lib/encrypt'
-require './lib/decrypt'
+require './lib/encryption'
+require './lib/decryption'
 require './lib/characters_list'
 
 class EnigmaTest < Minitest::Test
@@ -15,12 +15,12 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_can_encrypt_and_decrypt
+  def test_it_can_encryp_and_decrypt
     Date.stubs(:today).returns(Date.new(1995,8,4))
     enigma = Enigma.new
-    encrypt = Encrypt.new
-    decrypt = Decrypt.new
-    enigma.stubs(:encrypt).returns({
+    encryption = Encryption.new
+    decryption = Decryption.new
+    enigma.stubs(:encryption).returns({
       encryption: "keder ohulw",
       key: "02715",
       date: "040895"

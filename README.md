@@ -66,6 +66,8 @@ pry(main) > enigma.decrypt(encrypted[:encryption], "02715")
 # encrypt a message (generates random key and uses today's date)
 pry(main)> enigma.encrypt("hello world")
 #=> # encryption hash here
+
+
 Command Line Interface
 Add a command line interface for encryption and decryption. You should create a Runner file called encrypt.rb that takes two command line arguments. The first is an existing file that contains a message to encrypt. The second is a file where your program should write the encrypted message. In addition to writing the encrypted message to the file, your program should output to the screen the file it wrote to, the key and the date.
 
@@ -86,6 +88,8 @@ Array#rotate
 Date#strftime
 Date::today
 Enumerator#with_index
+
+
 Cracking
 The following is only required for scoring a 4 on functionality
 
