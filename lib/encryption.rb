@@ -1,3 +1,4 @@
+require 'date'
 require './lib/shiftables'
 require './lib/rotatables'
 
