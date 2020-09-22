@@ -23,6 +23,12 @@ class DecryptionTest < Minitest::Test
     assert_equal [0, 2, 7, 1, 5], decryption.key_array
   end
 
+  def test_it_can_join_key_array
+    decryption = Decryption.new
+    decryption.stubs(:key).returns('02715')
+    assert_equal ['02', '27', '71', '15'], decryption.key_array_join
+  end
+
   def test_it_can_shift_key
     decryption = Decryption.new
     decryption.stubs(:key).returns('02715')

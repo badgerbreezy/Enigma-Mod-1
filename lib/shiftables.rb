@@ -6,11 +6,14 @@ module Shiftable
     end
   end
 
-  def key_shift
-    key_shift = key_array.each_cons(2).map do |sub_array|
+  def key_array_join
+    key_array.each_cons(2).map do |sub_array|
       sub_array.join
     end
-    key_shift.map do |number|
+  end
+
+  def key_shift
+    key_array_join.map do |number|
       number.to_i
     end
   end
