@@ -71,6 +71,15 @@ class DecryptionTest < Minitest::Test
     assert_equal "l", decryption.d_rotation("e")
   end
 
+  def test_it_can_decrypt_encryption
+    decryption = Decryption.new
+    decryption = Decryption.new
+    decryption.stubs(:date).returns('040895')
+    decryption.stubs(:key).returns('02715')
+
+    assert_equal "hello world", decryption.enigma_rotation("keder ohulw")
+  end
+
   def test_it_can_decrypt
     decryption = Decryption.new
     decryption.stubs(:date).returns('040895')

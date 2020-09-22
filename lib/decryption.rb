@@ -19,6 +19,7 @@ class Decryption
   end
 
   def decrypt(message)
+
     message_array = message.downcase.split("").each_slice(4).to_a
     decrypted_array = []
     message_array.each do |sub_array|
@@ -28,6 +29,6 @@ class Decryption
       decrypted_array << d_rotation(sub_array[3])
     end
     decrypted = decrypted_array.join
-    {decryption: decrypted, key: key, date: date}
+    {decryption: enigma_rotation(message), key: key, date: date}
   end
 end
