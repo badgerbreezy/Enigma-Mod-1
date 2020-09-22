@@ -28,6 +28,6 @@ module Rotatable
       rotation_array << c_rotation(sub_array[2])
       rotation_array << d_rotation(sub_array[3])
     end
-    rotation = rotation_array.join
+    rotation_array.join
   end
 end
